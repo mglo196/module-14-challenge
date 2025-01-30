@@ -6,22 +6,21 @@ interface JwtPayload {
 }
 
 export const authenticateToken = (req: Request, res: Response, next: NextFunction) => {
-  const authHeader = req.headers.authorization;
+  const token = req.header('Authorization')?.replace('Bearer ', '');
 
-  if (authHeader) {
-    const token = authHeader.split(' ')[1]; // Extract the token after "Bearer"
-
-    // Make sure you have a secret key
-    const secretKey = process.env.JWT_SECRET_KEY || '';
-
-    jwt.verify(token, secretKey, (err, user) => {
-      if (err) {
-        return res.sendStatus(403); // Forbidden
-      }
-      req.user = user as JwtPayload; // Type the `user` correctly
-      return next(); // Proceed to the next middleware
-    });
-  } else {
-    return res.sendStatus(401); // Unauthorized if token is not found
+  if (!token) {
+    return res.status(401).json({ message: 'No token provided' });
   }
+
+  jwt.verify(token, process.env.JWT_SECRET_KEY as string, (err, decoded) => {
+    if (err) {
+      return res.status(403).json({ message: 'Invalid or expired token' });
+    }
+
+    // Attach user to the request object
+    req.user = decoded as JwtPayload; // Type assertion to JwtPayload
+
+    next();
+  });
 };
+

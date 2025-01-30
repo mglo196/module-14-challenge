@@ -7,18 +7,20 @@
     "skipLibCheck": true,
 
     /* Bundler mode */
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",  // Try switching to "node" if "bundler" causes issues
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
+    "noEmit": true,  // Keep this if relying on bundler to emit files
 
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    /* JSX */
+    "jsx": "react-jsx"  // Correct JSX setup for React 17+
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]

@@ -1,20 +1,25 @@
 {
   "compilerOptions": {
-    "outDir": "./dist",         // Compiled files will go into dist/
-    "rootDir": "./src",         // Your source files are in src/
-    "esModuleInterop": true,    // For proper module imports/exports
-    "moduleResolution": "node", // Resolves modules like Node.js
-    "target": "ES6",            // Or your preferred target
-    "module": "commonjs",       // CommonJS module for Node.js
-    "strict": true,             // Optional: ensures strict type checks
-    "noEmit": false,            // Allow emitting files
-    "allowJs": false            // Prevent JS files from being compiled
+    "outDir": "./dist",          // Compiled files will go into dist/
+    "rootDir": "./src",          // Your source files are in src/
+    "esModuleInterop": true,     // For proper module imports/exports
+    "moduleResolution": "node",  // Resolves modules like Node.js
+    "target": "ES2020",          // Use a newer version for better modern JavaScript features
+    "module": "ESNext",          // Using ESNext module system for React projects
+    "jsx": "react-jsx",          // Enable JSX with React 17+ syntax
+    "strict": true,              // Optional: ensures strict type checks
+    "noEmit": false,             // Allow emitting files
+    "allowJs": true,             // Allow JS files to be part of the project
+    "skipLibCheck": true,        // Skip type checking of declaration files (can help speed up compilation)
+    "forceConsistentCasingInFileNames": true  // Prevents issues with case sensitivity in file imports
   },
   "include": [
-    "src/**/*.ts"  // Include all TypeScript files in src/
+    "src/**/*.ts",  // Include all TypeScript files in src/
+    "src/**/*.tsx"  // Include all .tsx files (for React components)
   ],
   "exclude": [
     "node_modules", // Exclude node_modules folder
     "**/*.js"        // Exclude JS files from being included in TypeScript project
   ]
 }
+
