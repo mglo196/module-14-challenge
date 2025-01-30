@@ -1,13 +1,20 @@
 {
-    "extends": "../tsconfig.json",
-    "compilerOptions": {
-      /* Modules */
-      "rootDir": "src" /* Specify the root folder within your source files. */,
-  
-      /* Emit */
-      "outDir": "dist" /* Specify an output folder for all emitted files. */
-      // "noEmitOnError": true /* Disable emitting files if any type checking errors are reported. */
-    },
-    "include": ["src"],
-    "typeRoots": ["./node_modules/@types", "./src/types"]
+  "compilerOptions": {
+    "outDir": "./dist",         // Compiled files will go into dist/
+    "rootDir": "./src",         // Your source files are in src/
+    "esModuleInterop": true,    // For proper module imports/exports
+    "moduleResolution": "node", // Resolves modules like Node.js
+    "target": "ES6",            // Or your preferred target
+    "module": "commonjs",       // CommonJS module for Node.js
+    "strict": true,             // Optional: ensures strict type checks
+    "noEmit": false,            // Allow emitting files
+    "allowJs": false            // Prevent JS files from being compiled
+  },
+  "include": [
+    "src/**/*.ts"  // Include all TypeScript files in src/
+  ],
+  "exclude": [
+    "node_modules", // Exclude node_modules folder
+    "**/*.js"        // Exclude JS files from being included in TypeScript project
+  ]
 }

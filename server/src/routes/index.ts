@@ -1,12 +1,17 @@
-import { Router } from 'express';
-import authRoutes from './auth-routes.js';
-import apiRoutes from './api/index.js';
-import { authenticateToken } from '../middleware/auth.js';
+import { Router, Request, Response } from 'express';
 
-const router = Router();
+const apiRouter = Router();
 
-router.use('/auth', authRoutes);
-// TODO: Add authentication to the API routes
-router.use('/api', apiRoutes);
+// Example of a protected API route
+apiRouter.get('/protected', (req: Request, res: Response) => {
+  // `req.user` is populated by the `authenticateToken` middleware
+  res.json({ message: `Hello ${req.user?.username}, this is a protected API route!` });
+});
 
-export default router;
+// Other routes...
+apiRouter.get('/public', (req: Request, res: Response) => {
+  res.json({ message: 'This is a public API route.' });
+});
+
+export default apiRouter;
+
