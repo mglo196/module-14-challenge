@@ -31,6 +31,7 @@
   /* Add to make sure TypeScript picks up your global type declaration files */
   "include": [
     "src/**/*.ts", /* Include all .ts files in the src folder */
+     "src/**/*.tsx",
     "src/types/express/**/*.d.ts" /* Explicitly include your types/express folder */
   ],
 

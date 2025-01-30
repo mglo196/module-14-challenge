@@ -3,48 +3,49 @@ import type { UserData } from '../interfaces/UserData';
 
 class AuthService {
   getProfile() {
-    // TODO: return the decoded token
+    // Return the decoded token as a UserData type
     return jwtDecode<UserData>(this.getToken());
   }
 
   loggedIn() {
-    // TODO: return a value that indicates if the user is logged in
-    const token= this.getToken();
-    return !!token && !this.isTokenExpired(token);
+    // Check if the user is logged in by verifying token presence and expiration
+    const token = this.getToken();
+    return token && !this.isTokenExpired(token);
   }
-  
+
   isTokenExpired(token: string) {
-    // TODO: return a value that indicates if the token is expired
-    try{
-      const decoded= jwtDecode<JwtPayload>(token);
+    try {
+      const decoded = jwtDecode<JwtPayload>(token);
 
       if (decoded?.exp && decoded?.exp < Date.now() / 1000) {
-        return true;
+        return true; // Token has expired
       }
+    } catch (err) {
+      console.error('Error decoding token:', err);
     }
-    catch (err) {
-      return false;
-    }
+
+    return false; // Token is not expired or invalid
   }
 
   getToken(): string {
-    // TODO: return the token
-    const loggedInUser= localStorage.getItem('id_token') || '';
-    return loggedInUser;
+    // Retrieve the token from localStorage
+    return localStorage.getItem('id_token') || ''; // Return empty string if no token exists
   }
 
   login(idToken: string) {
-    // TODO: set the token to localStorage
-    localStorage.setItem('id_token', idToken);
-    // TODO: redirect to the home page
-    window.location.assign('/');
+    // Store the token and redirect the user to the home page
+    if (idToken) {
+      localStorage.setItem('id_token', idToken);
+      window.location.assign('/');
+    } else {
+      console.error('Invalid token');
+    }
   }
 
   logout() {
-    // TODO: remove the token from localStorage
+    // Remove the token and redirect the user to the login page
     localStorage.removeItem('id_token');
-    // TODO: redirect to the login page
-    window.location.assign('/');
+    window.location.assign('/login');
   }
 }
 
