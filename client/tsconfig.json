@@ -3,18 +3,19 @@
     "target": "ES2020",
     "module": "ESNext",
     "moduleResolution": "node",
-    "jsx": "react-jsx",       // Enable React JSX support
+    "jsx": "react-jsx",
     "strict": true,
     "skipLibCheck": true,
     "allowJs": true,
     "esModuleInterop": true,
     "lib": ["ES2020", "DOM"],
-    "allowImportingTsExtensions": true 
+    "allowImportingTsExtensions": true,
+    "noEmit": true  // Add this line
   },
   "include": [
-    "client/src/**/*"               // All files inside client/src/
+    "client/src/**/*"
   ],
   "exclude": [
-    "node_modules"           // Exclude node_modules
+    "node_modules"
   ]
 }
