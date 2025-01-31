@@ -1,27 +1,20 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
-    "skipLibCheck": true,
-
-    /* Bundler mode */
-    "moduleResolution": "node",  // Try switching to "node" if "bundler" causes issues
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,  // Keep this if relying on bundler to emit files
-
-    /* Linting */
+    "moduleResolution": "node",
+    "jsx": "react-jsx",       // Enable React JSX support
     "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-
-    /* JSX */
-    "jsx": "react-jsx"  // Correct JSX setup for React 17+
+    "skipLibCheck": true,
+    "allowJs": true,
+    "esModuleInterop": true,
+    "lib": ["ES2020", "DOM"],
+    "allowImportingTsExtensions": true 
   },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": [
+    "client/src/**/*"               // All files inside client/src/
+  ],
+  "exclude": [
+    "node_modules"           // Exclude node_modules
+  ]
 }

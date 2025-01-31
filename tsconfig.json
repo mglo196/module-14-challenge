@@ -1,40 +1,20 @@
 {
   "compilerOptions": {
-    /* Language and Environment */
-    "jsx": "react-jsx",
-    "target": "ES2020", /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
-    "module": "ESNext", /* Specify what module code is generated. */
-    "moduleResolution": "Bundler", /* Specify how TypeScript looks up a file from a given module specifier. */
-    "skipLibCheck": true,
-    
-
-    /* JavaScript Support */
-    "allowJs": true, /* Allow JavaScript files to be a part of your program. */
-    "checkJs": true, /* Enable error reporting in type-checked JavaScript files. */
-
-    /* Interop Constraints */
-    "esModuleInterop": true, /* Emit additional JavaScript to ease support for importing CommonJS modules. */
-    "allowSyntheticDefaultImports": true, /* Allow default imports from modules with no default export. This does not affect code emit, just typechecking. */
-    "forceConsistentCasingInFileNames": true, /* Ensure that casing is correct in imports. */
-
-    /* Type Checking */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "exactOptionalPropertyTypes": true,
-    "noImplicitReturns": true,
-    "noImplicitOverride": true,
-    "useUnknownInCatchVariables": true
+    "target": "ES2020",                 // Compile to ES2020 JavaScript
+    "module": "ESNext",                 // Use the latest ECMAScript module system
+    "moduleResolution": "node",         // Resolve modules the same way Node.js does
+    "jsx": "react-jsx",                 // Use React 17+ JSX transform
+    "strict": true,                     // Enable strict mode for better type checking
+    "skipLibCheck": true,               // Skip type checking of declaration files (for speed)
+    "allowJs": true,                    // Allow JavaScript files (if needed)
+    "esModuleInterop": true,            // Enable compatibility with CommonJS modules
+    "lib": ["ES2020", "DOM"],           // Include ES2020 and DOM types
+    "allowImportingTsExtensions": true  // Allow importing .tsx files without specifying the extension
   },
-
-  /* Add to make sure TypeScript picks up your global type declaration files */
   "include": [
-    "src/**/*.ts", /* Include all .ts files in the src folder */
-     "src/**/*.tsx",
-    "src/types/express/**/*.d.ts" /* Explicitly include your types/express folder */
+    "client/src/**/*"                   // Ensure this points to the correct directory (client/src)
   ],
-
-  /* Optionally, you can also add "exclude" if you want to exclude certain folders like node_modules */
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"                      // Exclude node_modules from the compilation
+  ]
 }
